@@ -4,6 +4,9 @@ class CreateRoomUsers < ActiveRecord::Migration
       t.integer :room_id
       t.integer :user_id
 
+      t.references "room", index: true
+      t.references "user", index: true
+
       t.timestamps null: false
     end
   end

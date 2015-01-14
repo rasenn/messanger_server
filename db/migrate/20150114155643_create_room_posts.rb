@@ -4,6 +4,9 @@ class CreateRoomPosts < ActiveRecord::Migration
       t.integer :post_id
       t.integer :room_id
 
+      t.references "post", index: true
+      t.references "room", index: true
+
       t.timestamps null: false
     end
   end
