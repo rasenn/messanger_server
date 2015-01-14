@@ -1,9 +1,25 @@
 Rails.application.routes.draw do
+  get 'friend/list'
+
+  get 'friend/add'
+
+  get 'user/search'
+
+  get 'user/edit'
+
+  get 'user/status'
+
+  get 'room/index'
+
+  get 'room/list'
+
+  get 'room/create'
+
+  get 'room/add'
+
+  get 'room/post'
+
   devise_for :users
-  get 'home/rooms'
-
-  get 'home/room'
-
   root to: "message#home"
 
 

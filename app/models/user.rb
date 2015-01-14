@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many: :room_users
-  has_many: :rooms, :through => :room_users
+  has_many :room_users
+  has_many :rooms, :through => :room_users
 
-  has_many: :post_users
-  has_many: :posts, :through => :post_users
+  has_many :post_users
+  has_many :posts, :through => :post_users
 end
