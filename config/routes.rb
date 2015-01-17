@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'friend/list'
 
   get 'friend/add'
@@ -8,8 +9,10 @@ Rails.application.routes.draw do
   get 'user/edit'
 
   get 'user/status'
-
+  
   get 'room/index'
+
+  get 'room/home'
 
   get 'room/list'
 
@@ -20,7 +23,8 @@ Rails.application.routes.draw do
   get 'room/post'
 
   devise_for :users
-  root to: "message#home"
+
+  root to: "room#index"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

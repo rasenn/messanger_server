@@ -44,6 +44,12 @@ group :development, :test do
 
   gem "rspec"
   gem "rspec-rails"
+
+  gem "pry-rails"
+
+  gem "better_errors"
+  gem "binding_of_caller"
+
 end
 
 gem "grape"
