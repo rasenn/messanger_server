@@ -14,15 +14,19 @@
 ActiveRecord::Schema.define(version: 20150114155655) do
 
   create_table "friends", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
+    t.integer  "user_id",    null: false
+    t.integer  "friend_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "friends", ["friend_id"], name: "index_friends_on_friend_id"
+  add_index "friends", ["user_id", "friend_id"], name: "index_friends_on_user_id_and_friend_id", unique: true
+  add_index "friends", ["user_id"], name: "index_friends_on_user_id"
+
   create_table "post_users", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "user_id"
+    t.integer  "post_id",    null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150114155655) do
   end
 
   create_table "room_posts", force: :cascade do |t|
-    t.integer  "post_id"
+    t.integer  "post_id",    null: false
     t.integer  "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,8 +51,8 @@ ActiveRecord::Schema.define(version: 20150114155655) do
   add_index "room_posts", ["room_id"], name: "index_room_posts_on_room_id"
 
   create_table "room_users", force: :cascade do |t|
-    t.integer  "room_id"
-    t.integer  "user_id"
+    t.integer  "room_id",    null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
