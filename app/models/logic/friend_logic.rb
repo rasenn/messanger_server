@@ -36,11 +36,20 @@ class FriendLogic
     return false unless user.kind_of?(User) && friend_id.kind_of?(Fixnum)
     
     friend = User.find_by_id(friend_id)
-    if friend && user.friends.include?(friend)
+    if friend && !(user.friends.include?(friend))
       user.friends.push friend
       return true
     end
     return false
+  end
+
+  # friend登録されているか否か。
+  # return false / 登録されていない場合
+  # return true / 登録されている場合
+  def self.is_friend?(user, member_id)
+    return false unless user.kind_of?(User) && member_id.kind_of?(Fixnum)
+    member = User.find_by_id(member_id)
+    return user.friends.include?(member)
   end
 
   private

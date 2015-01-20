@@ -139,7 +139,39 @@ RSpec.describe FriendLogic, :type => :model do
       it "should be fail" do
         expect(FriendLogic.add_friend(user1, nil)).to be(false)
       end
+    end    
+  end
+
+  describe "#is_friend?" do
+    context "user2 is'nt user1 friend" do 
+      it "should be false" do
+        expect(FriendLogic.is_friend?(user1, user2.id)).to be(false)
+      end
     end
-    
+
+    context "user2 already user1 friend" do 
+      it "should be true" do
+        FriendLogic.add_friend(user1, user2.id)
+        expect(FriendLogic.is_friend?(user1, user2.id)).to be(true)
+      end
+    end
+
+    context "when nil user" do 
+      it "should be false" do
+        expect(FriendLogic.is_friend?(nil, user2.id)).to be(false)
+      end
+    end
+
+    context "when nil friend_id" do
+      it "should be false" do
+        expect(FriendLogic.is_friend?(user1, nil)).to be(false)
+      end
+    end
+
+    context "when -1 friend_id" do
+      it "should be false" do
+        expect(FriendLogic.is_friend?(user1, -1)).to be(false)
+      end
+    end
   end
 end
