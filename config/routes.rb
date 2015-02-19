@@ -16,11 +16,13 @@ Rails.application.routes.draw do
 
   get 'room/list'
 
-  get 'room/create'
+  post 'room/create'
 
-  get 'room/add'
+  post 'room/add'
 
-  get 'room/post'
+  post 'room/post'
+
+  get 'room/show'
 
   devise_for :users
 

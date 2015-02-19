@@ -11,7 +11,7 @@ class RoomLogic
     
     room = Room.create(:name => room_name)
     unless room.new_record?
-      room.users.push user
+      room.users.push  user
       return room.id
     else
       return nil
@@ -54,7 +54,7 @@ class RoomLogic
 
     # member,roomが見つからない、すでに部屋にいる場合にはエラーを返す
     if member.present? && room.present? && user_in_room && !new_member_in_room
-      room.users.push member
+      room.users.push  member
       return true
     else
       return false
@@ -70,8 +70,10 @@ class RoomLogic
     room = is_member?(user, room_id)
     if room
       messa = Post.create(:message => message)
+      messa.user = user
       unless messa.new_record?
-        room.posts.push messa        
+        room.posts.push  messa
+        room.save
         return true
       end
     end

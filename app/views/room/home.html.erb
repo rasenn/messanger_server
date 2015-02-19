@@ -1,2 +1,16 @@
-<h1>Room#Home</h1>
-<p>Find me in app/views/room/home.html.erb</p>
+
+your name is <%= @name %>
+
+<%= form_tag( {controller: "room", action: "create"} ) do %>
+  <%= text_field_tag "room_name" %>
+  <%= submit_tag("sumit") %>
+<% end %>
+
+<h2>room</h2>
+<% @rooms.each do |room| %>
+  <%= link_to room.name, url_for(controller: "room", action: "show", room_id: room.id ) %>
+  <br />
+<% end %>
+
+
+

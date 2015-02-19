@@ -10,6 +10,12 @@ class FriendLogic
     return return_users
   end
 
+  def self.get_friends(user)
+    return nil unless search_string.kind_of?(User)
+    return user.friends
+  end
+
+
   # 名前で検索
   # return users / 対象ユーザがいれば
   # return nil / 検索の入力が間違っていれば

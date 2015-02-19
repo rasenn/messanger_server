@@ -1,0 +1,18 @@
+<h2>Members</h2>
+<% @users.each do |user| %>
+  <%= user.email %>
+  <br />
+<% end%>
+
+<h2>messages</h2>
+<%= form_tag controller: "room", action: "post" do %>
+  <%= text_field_tag "message" %>
+  <%= hidden_field_tag "room_id", @room_id %>
+  <%= submit_tag "sumit" %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= post.user.email %>:<%= post.message %><br />
+<% end %>
+
+

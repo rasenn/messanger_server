@@ -7,4 +7,5 @@ class UserController < ApplicationController
 
   def status
   end
+
 end
