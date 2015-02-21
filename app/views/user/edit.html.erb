@@ -1,9 +1,12 @@
 
-your email is : <%= @email %>
+your email is : <%= @current_user.email %>
 <%= form_tag controller: "user" ,action: "change" do %>
-<%= text_field_tag "name", @name %>
+<%= text_field_tag "name", @current_user.name %>
 <%= submit_tag "submit" %>
 <% end %>
 
+your key is:<br />
+
+<%= current_user.authentication_token %>
 
 

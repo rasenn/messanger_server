@@ -58,3 +58,4 @@ end
 
 gem "grape"
 gem "devise"
+gem "hashie_rails"

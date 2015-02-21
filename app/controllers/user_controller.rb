@@ -3,8 +3,7 @@ class UserController < ApplicationController
   end
 
   def edit
-    @email = current_user.email
-    @name = current_user.name
+    @current_user = current_user
   end
 
   def change
