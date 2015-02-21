@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'user/edit'
 
+  post 'user/change'
+
   get 'user/status'
   
   get 'room/index'
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
 
   root to: "room#index"
 
+#  mount Messanger::API => "/"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

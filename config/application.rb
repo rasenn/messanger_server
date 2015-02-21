@@ -24,5 +24,8 @@ module MessageServer
     config.active_record.raise_in_transactional_callbacks = true
     
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**/}')]
+    
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end

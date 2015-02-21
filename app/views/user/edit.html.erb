@@ -1,2 +1,9 @@
-<h1>User#edit</h1>
-<p>Find me in app/views/user/edit.html.erb</p>
+
+your email is : <%= @email %>
+<%= form_tag controller: "user" ,action: "change" do %>
+<%= text_field_tag "name", @name %>
+<%= submit_tag "submit" %>
+<% end %>
+
+
+
