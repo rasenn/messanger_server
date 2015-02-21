@@ -11,7 +11,7 @@ class FriendLogic
   end
 
   def self.get_friends(user)
-    return nil unless search_string.kind_of?(User)
+    return nil unless user.kind_of?(User)
     return user.friends
   end
 

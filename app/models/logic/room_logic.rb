@@ -37,7 +37,7 @@ class RoomLogic
     return nil unless room
 
     users = room.users
-    posts = room.posts
+    posts = room.posts.includes(:user)
     return [users,posts]
   end
 
@@ -80,7 +80,18 @@ class RoomLogic
     return false
   end
 
+  def self.get_friends(user,room_id)
+    return nil unless user.kind_of?(User) && room_id.kind_of?(Fixnum)
+    
+    room = is_member?(user, room_id)
+    # userがroom内にいない場合、nilを返す
+    return nil unless room
 
+    friends = user.friends
+    users = room.users
+    
+    return friends - users
+  end
 
   private 
 
@@ -94,7 +105,5 @@ class RoomLogic
     else
       return nil
     end
-    
   end
-
 end

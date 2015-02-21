@@ -1,2 +1,21 @@
-<h1>Friend#list</h1>
-<p>Find me in app/views/friend/list.html.erb</p>
+
+<h2>friend search</h2>
+<%= form_tag( {controller: "friend", action: "list"}, {method: "get"}) do %>
+  <%= text_field_tag "search" %>
+  <%= submit_tag "submit" %>
+<% end %>
+
+<% if @users.present? %>
+  <% @users.each do |user| %>
+  Add friend:<%= link_to user.email, {controller: "friend", action: "add" ,user_id: user.id }%>
+  <% end %>
+<% end %>
+
+<h2>friend list</h2>
+<% unless @friends.present? %> none friend<% end%>
+
+<% @friends.each do |friend| %>
+  <%= friend.email %><br />
+<% end %>
+
+

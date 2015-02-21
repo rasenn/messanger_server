@@ -39,7 +39,7 @@ class RoomController < ApplicationController
     else
       RoomLogic.add_member(current_user, params["room_id"].to_i, params["user_id"].to_i)
     end
-    redirect_to :action => "show"
+    redirect_to :action => "show", room_id: params["room_id"]
   end
 
   # メッセージを投稿
@@ -59,6 +59,7 @@ class RoomController < ApplicationController
 
     redirect_to :action => "home" unless room
 
+    @friends = RoomLogic.get_friends(current_user,params["room_id"].to_i)
     @users,@posts = room
     @room_id = params["room_id"]
   end

@@ -1,12 +1,13 @@
 
 your name is <%= @name %>
 
+<h3>create room </h3>
 <%= form_tag( {controller: "room", action: "create"} ) do %>
-  <%= text_field_tag "room_name" %>
+  room name:<%= text_field_tag "room_name" %>
   <%= submit_tag("sumit") %>
 <% end %>
 
-<h2>room</h2>
+<h2>rooms</h2>
 <% @rooms.each do |room| %>
   <%= link_to room.name, url_for(controller: "room", action: "show", room_id: room.id ) %>
   <br />

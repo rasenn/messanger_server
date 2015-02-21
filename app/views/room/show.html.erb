@@ -1,4 +1,10 @@
 <h2>Members</h2>
+add room member
+<%= form_tag controller: "room" ,action: "add" do %>
+<%= select_tag "user_id", options_for_select((@friends-@users).map{|f| [f.email, f.id.to_s]}) %>
+<%= hidden_field_tag "room_id", @room_id %>
+<%= submit_tag "submit"%>
+<% end %>
 <% @users.each do |user| %>
   <%= user.email %>
   <br />
@@ -8,11 +14,11 @@
 <%= form_tag controller: "room", action: "post" do %>
   <%= text_field_tag "message" %>
   <%= hidden_field_tag "room_id", @room_id %>
-  <%= submit_tag "sumit" %>
+  <%= submit_tag "submit" %>
 <% end %>
 
 <% @posts.each do |post| %>
-  <%= post.user.email %>:<%= post.message %><br />
+  <%= post.user.name || post.user.email %>:<%= post.message %><br />
 <% end %>
 
 
